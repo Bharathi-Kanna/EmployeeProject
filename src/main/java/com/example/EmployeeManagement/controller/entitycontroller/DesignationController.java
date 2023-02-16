@@ -2,7 +2,6 @@ package com.example.EmployeeManagement.controller.entitycontroller;
 
 import com.example.EmployeeManagement.controller.ControllerInterface;
 import com.example.EmployeeManagement.entity.entities.Designation;
-import com.example.EmployeeManagement.services.serviceclass.entityservices.DesignationService;
 import com.example.EmployeeManagement.services.serviceinterface.entityinterface.DesignationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
