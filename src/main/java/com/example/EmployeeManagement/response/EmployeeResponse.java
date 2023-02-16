@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class EmployeeResponse  {
 
-    private Long employee_id;
+    private Long employeeId;
 
     private String name;
 

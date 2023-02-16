@@ -24,6 +24,11 @@ public class DepartmentService implements DepartmentServiceInterface {
     }
 
     @Override
+    public void deleteById(Long id) {
+        departmentRepo.deleteById(id);
+    }
+
+    @Override
     public Department addEntity(Department department) {
         return departmentRepo.save(department);
     }
@@ -34,5 +39,6 @@ public class DepartmentService implements DepartmentServiceInterface {
         department.setDepartmentName(newDepartment.getDepartmentName());
         return departmentRepo.save(department);
     }
+
 
 }

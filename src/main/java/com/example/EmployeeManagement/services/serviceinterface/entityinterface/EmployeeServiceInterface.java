@@ -9,8 +9,11 @@ import java.util.List;
 public interface EmployeeServiceInterface extends ServiceInterface<Employee> {
 
 
-    List<EmployeeResponse> findAllEntityWithNames();
+
     EmployeeResponse findEntityByIdWithNames(Long id);
+
+    public List<EmployeeResponse> findAllEmployeeByEntityId(Long id,String entity);
+
 
 
 

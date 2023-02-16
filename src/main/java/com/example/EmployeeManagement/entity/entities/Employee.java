@@ -18,13 +18,13 @@ public class  Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="emp_id")
-    private Long employee_id;
+    private Long employeeId;
     @Column(name="emp_name")
     private String name;
     @Column(name="dep_id")
-    private Long department_id;
+    private Long departmentId;
     @Column(name="des_id")
-    private Long designation_id;
+    private Long designationId;
     @Column(name="emp_phoneNum")
     private String phoneNumber;
     @Column(name="emp_email")

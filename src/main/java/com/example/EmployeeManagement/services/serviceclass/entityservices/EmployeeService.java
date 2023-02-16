@@ -29,47 +29,70 @@ public class EmployeeService implements EmployeeServiceInterface  {
     public List<Employee> findAllEntity() {
         return employeeRepo.findAll();
     }
-
-
     @Override
-    public List<EmployeeResponse> findAllEntityWithNames(){
-       List<EmployeeResponse> employeeResponseList =new ArrayList<  >();
-       List<Employee> employees = findAllEntity();
-       employees.forEach((employee)->{
-           String departmentName;
-           String designationName;
-           EmployeeResponse employeeResponse = new EmployeeResponse();
-           employeeResponse.setEmployee_id(employee.getEmployee_id());
-           employeeResponse.setName(employee.getName());
-           Department department  = departmentRepo.findById(employee.getEmployee_id()).orElseThrow(() -> new EntityNotFound("department not found "));
-           departmentName=department.getDepartmentName();
-           employeeResponse.setDepartmentName(departmentName);
-           Designation designation = designationRepo.findById(employee.getEmployee_id()).orElseThrow(() -> new EntityNotFound("designation not found "));
-           designationName=designation.getDesignationName();
-           employeeResponse.setDesignationName(designationName);
-           employeeResponse.setAddress(employee.getAddress());
-           employeeResponse.setEmail(employee.getEmail());
-           employeeResponse.setDateOfBirth(employee.getDateOfBirth());
-           employeeResponse.setStatus(employee.getStatus());
-           employeeResponse.setJoinDate(employee.getJoinDate());
-           employeeResponse.setLeftDate(employee.getLeftDate());
-           employeeResponse.setPhoneNumber(employee.getPhoneNumber());
-           employeeResponseList.add(employeeResponse);
-       });
-        return employeeResponseList ;
+    public Employee updateEntity(Long id,Employee newEmployee) {
+        Employee employee = findEntityById(id);
+        employee.setName(newEmployee.getName());
+        employee.setAddress(newEmployee.getAddress());
+        employee.setDateOfBirth(newEmployee.getDateOfBirth());
+        employee.setEmail(newEmployee.getEmail());
+        employee.setDepartmentId(newEmployee.getDepartmentId());
+        employee.setDesignationId(newEmployee.getDesignationId());
+        employee.setPhoneNumber(newEmployee.getPhoneNumber());
+        employee.setStatus(newEmployee.getStatus());
+        employee.setJoinDate(newEmployee.getJoinDate());
+        employee.setLeftDate(newEmployee.getLeftDate());
+        return employeeRepo.save(employee);
     }
     @Override
     public EmployeeResponse findEntityByIdWithNames(Long id) {
-        EmployeeResponse employeeResponse=new EmployeeResponse();
         Employee employee = findEntityById(id);
+        return findEmployeeResponse(employee);
+    }
+
+    @Override
+    public Employee addEntity(Employee employee){
+        return employeeRepo.save(employee);
+    }
+
+    @Override
+    public Employee findEntityById(Long id){
+        return employeeRepo.findById(id).orElseThrow(() -> new EntityNotFound("employee not found " + id));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        employeeRepo.deleteById(id);
+    }
+
+    public List<EmployeeResponse> findAllEmployeeByEntityId(Long id,String entity) {
+
+        List<EmployeeResponse> employeeResponseList =new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
+
+        if(entity.equals("DEP"))
+            employees = employeeRepo.findByDepartmentId(id);
+        else if(entity.equals("DES"))
+            employees = employeeRepo.findByDesignationId(id);
+        else
+            employees = employeeRepo.findAll();
+
+        employees.forEach((employee)->{
+            employeeResponseList.add(findEmployeeResponse(employee));
+        });
+        return employeeResponseList ;
+    }
+
+    private EmployeeResponse findEmployeeResponse(Employee employee){
+        EmployeeResponse employeeResponse=new EmployeeResponse();
         String departmentName;
         String designationName;
-        employeeResponse.setEmployee_id(employee.getEmployee_id());
+        employeeResponse.setEmployeeId(employee.getEmployeeId());
         employeeResponse.setName(employee.getName());
-        Department department  = departmentRepo.findById(employee.getEmployee_id()).orElseThrow(() -> new EntityNotFound("department not found "));
+        Department department  = departmentRepo.findById(employee.getDepartmentId()).orElseThrow(() -> new EntityNotFound("department not found "));
         departmentName=department.getDepartmentName();
         employeeResponse.setDepartmentName(departmentName);
-        Designation designation = designationRepo.findById(employee.getEmployee_id()).orElseThrow(() -> new EntityNotFound("designation not found "));
+        Designation designation = designationRepo.findById(employee.getDesignationId()).orElseThrow(() -> new EntityNotFound("designation not found "));
         designationName=designation.getDesignationName();
         employeeResponse.setDesignationName(designationName);
         employeeResponse.setAddress(employee.getAddress());
@@ -82,30 +105,6 @@ public class EmployeeService implements EmployeeServiceInterface  {
         return employeeResponse;
     }
 
-    @Override
-    public Employee addEntity(Employee employee){
-        return employeeRepo.save(employee);
-    }
-
-    @Override
-    public Employee findEntityById(Long id){
-        return employeeRepo.findById(id).orElseThrow(() -> new EntityNotFound("employee not found " + id));
-    }
-    @Override
-    public Employee updateEntity(Long id,Employee newEmployee) {
-        Employee employee = findEntityById(id);
-        employee.setName(newEmployee.getName());
-        employee.setAddress(newEmployee.getAddress());
-        employee.setDateOfBirth(newEmployee.getDateOfBirth());
-        employee.setEmail(newEmployee.getEmail());
-        employee.setDepartment_id(newEmployee.getDepartment_id());
-        employee.setDesignation_id(newEmployee.getDesignation_id());
-        employee.setPhoneNumber(newEmployee.getPhoneNumber());
-        employee.setStatus(newEmployee.getStatus());
-        employee.setJoinDate(newEmployee.getJoinDate());
-        employee.setLeftDate(newEmployee.getLeftDate());
-        return employeeRepo.save(employee);
-    }
 
 }
 

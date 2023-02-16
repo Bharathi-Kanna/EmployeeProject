@@ -18,22 +18,20 @@ public class EmployeeController implements ControllerInterface<Employee>{
     @Autowired
     private EmployeeServiceInterface employeeServices;
 
-
     @GetMapping("/findAll")
-    public ResponseEntity<List<EmployeeResponse>> findAllEntityWithNames() {
-
-        return new ResponseEntity<>(employeeServices.findAllEntityWithNames(), HttpStatus.OK) ;
+    public ResponseEntity<List<EmployeeResponse>> findAllEntityWithNames(@RequestParam(defaultValue = "1") Long id,@RequestParam(defaultValue = "EMP") String entity){
+        return new ResponseEntity<>(employeeServices.findAllEmployeeByEntityId(id,entity),HttpStatus.OK);
     }
-    @GetMapping("/findAllWithId")
-    public ResponseEntity<List<Employee>> findAllEntity() {
-
-        return new ResponseEntity<>(employeeServices.findAllEntity(), HttpStatus.OK) ;
-    }
-
     @GetMapping("/findById/{id}")
     public ResponseEntity<EmployeeResponse> findEntityByIdWithId(@PathVariable("id") Long id) {
         return new ResponseEntity<>(employeeServices.findEntityByIdWithNames(id),HttpStatus.OK);
     }
+
+    @GetMapping("/findAllWithId")
+    public ResponseEntity<List<Employee>> findAllEntity() {
+        return new ResponseEntity<>(employeeServices.findAllEntity(), HttpStatus.OK) ;
+    }
+
     @Override
     @GetMapping("/findByIdWithId/{id}")
     public ResponseEntity<Employee> findEntityById(@PathVariable("id") Long id) {
@@ -50,6 +48,12 @@ public class EmployeeController implements ControllerInterface<Employee>{
     @PutMapping("/update/{id}")
     public ResponseEntity<Employee> updateEntity(@PathVariable("id") Long id,@RequestBody Employee employee) {
         return new ResponseEntity<>(employeeServices.updateEntity(id,employee),HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<HttpStatus> deleteById(Long id) {
+        employeeServices.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

@@ -24,6 +24,11 @@ public class DesignationService implements DesignationServiceInterface {
     }
 
     @Override
+    public void deleteById(Long id) {
+         designationRepo.deleteById(id);
+    }
+
+    @Override
     public Designation addEntity(Designation designation) {
         return designationRepo.save(designation);
     }

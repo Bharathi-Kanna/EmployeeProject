@@ -1,6 +1,7 @@
 package com.example.EmployeeManagement.controller;
 
 import com.example.EmployeeManagement.entity.entities.Employee;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ ResponseEntity<List<T>> findAllEntity();
 
     ResponseEntity<T> addEntity( T entity);
     ResponseEntity<T> updateEntity(Long id,T entity);
+
+    ResponseEntity<HttpStatus> deleteById(Long id);
 
 
 

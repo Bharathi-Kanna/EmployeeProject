@@ -14,6 +14,8 @@ public interface ServiceInterface<T> {
     List<T> findAllEntity();
     T findEntityById(Long id);
 
+    void deleteById(Long id);
+
 
 
 

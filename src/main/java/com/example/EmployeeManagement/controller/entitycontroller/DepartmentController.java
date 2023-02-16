@@ -34,4 +34,9 @@ public class DepartmentController implements ControllerInterface<Department> {
     public ResponseEntity<Department> updateEntity(@PathVariable Long id,@RequestBody Department department) {
         return new ResponseEntity<>(departmentService.updateEntity(id,department),HttpStatus.OK);
     }
+    @Override
+    public ResponseEntity<HttpStatus> deleteById(Long id) {
+        departmentService.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

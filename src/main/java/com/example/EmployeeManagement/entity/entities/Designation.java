@@ -16,7 +16,7 @@ public class Designation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="des_id")
-    private Long designation_id;
+    private Long designationId;
     @Column(name="des_name")
     private String designationName;
     @JsonIgnore

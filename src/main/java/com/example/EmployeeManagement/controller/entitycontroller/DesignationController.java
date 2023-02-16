@@ -36,4 +36,9 @@ public class DesignationController implements ControllerInterface<Designation> {
     public ResponseEntity<Designation> updateEntity(@PathVariable("id") Long id, @RequestBody Designation designation) {
         return new ResponseEntity<>(designationService.updateEntity(id,designation),HttpStatus.OK);
     }
+    @Override
+    public ResponseEntity<HttpStatus> deleteById(Long id) {
+        designationService.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
