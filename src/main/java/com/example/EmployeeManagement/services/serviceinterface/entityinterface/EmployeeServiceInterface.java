@@ -12,7 +12,7 @@ public interface EmployeeServiceInterface extends ServiceInterface<Employee> {
 
     EmployeeResponse findEntityByIdWithNames(Long id);
 
-    public List<EmployeeResponse> findAllEmployeeByEntityId(Long id,String entity);
+    List<EmployeeResponse> findAllEmployeeByEntityId(Long id,String entity);
 
 
 

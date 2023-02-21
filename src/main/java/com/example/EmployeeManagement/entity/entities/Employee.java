@@ -27,16 +27,23 @@ public class  Employee {
     private Long designationId;
     @Column(name="emp_phoneNum")
     private String phoneNumber;
+    @Column(name="emp_experience")
+    private Float experience;
     @Column(name="emp_email")
     private String email;
     @Column(name="emp_DOB")
     private LocalDate dateOfBirth;
     @Column(name="emp_address")
     private String address;
+    @Column(name="emp_type")
+    private String employmentType;
     @Column(name="emp_status")
     private String status;
     @Column(name="emp_join_date")
     private LocalDate joinDate;
+    @OneToOne(cascade = CascadeType.ALL)
+//    @Column(name="emp_payroll")
+    private Payroll payroll;
     @Column(name="emp_left_date")
     private LocalDate leftDate;
     @JsonIgnore

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/employee")
 public class EmployeeController implements ControllerInterface<Employee>{
 
@@ -49,9 +50,9 @@ public class EmployeeController implements ControllerInterface<Employee>{
     public ResponseEntity<Employee> updateEntity(@PathVariable("id") Long id,@RequestBody Employee employee) {
         return new ResponseEntity<>(employeeServices.updateEntity(id,employee),HttpStatus.OK);
     }
-
+    @DeleteMapping("/delete/{id}")
     @Override
-    public ResponseEntity<HttpStatus> deleteById(Long id) {
+    public ResponseEntity<HttpStatus> deleteById(@PathVariable("id") Long id) {
         employeeServices.deleteById(id);
         return new ResponseEntity(HttpStatus.OK);
     }

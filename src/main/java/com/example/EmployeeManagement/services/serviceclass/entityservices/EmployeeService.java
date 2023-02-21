@@ -11,10 +11,8 @@ import com.example.EmployeeManagement.response.EmployeeResponse;
 import com.example.EmployeeManagement.services.serviceinterface.entityinterface.EmployeeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeService implements EmployeeServiceInterface  {
@@ -31,18 +29,37 @@ public class EmployeeService implements EmployeeServiceInterface  {
     }
     @Override
     public Employee updateEntity(Long id,Employee newEmployee) {
+
         Employee employee = findEntityById(id);
-        employee.setName(newEmployee.getName());
-        employee.setAddress(newEmployee.getAddress());
-        employee.setDateOfBirth(newEmployee.getDateOfBirth());
-        employee.setEmail(newEmployee.getEmail());
-        employee.setDepartmentId(newEmployee.getDepartmentId());
-        employee.setDesignationId(newEmployee.getDesignationId());
-        employee.setPhoneNumber(newEmployee.getPhoneNumber());
-        employee.setStatus(newEmployee.getStatus());
-        employee.setJoinDate(newEmployee.getJoinDate());
-        employee.setLeftDate(newEmployee.getLeftDate());
-        return employeeRepo.save(employee);
+        if(newEmployee.getEmployeeId()==null)
+            newEmployee.setEmployeeId(employee.getEmployeeId());
+        if(newEmployee.getName()==null)
+            newEmployee.setName(employee.getName());
+        if(newEmployee.getAddress()==null)
+            newEmployee.setAddress(employee.getAddress());
+        if(newEmployee.getDateOfBirth()==null)
+            newEmployee.setDateOfBirth(employee.getDateOfBirth());
+        if(newEmployee.getEmail()==null)
+            newEmployee.setEmail(employee.getEmail());
+        if(newEmployee.getDepartmentId()==null)
+            newEmployee.setDepartmentId(employee.getDepartmentId());
+        if(newEmployee.getDesignationId()==null)
+            newEmployee.setDesignationId(employee.getDesignationId());
+        if(newEmployee.getPhoneNumber()==null)
+            newEmployee.setPhoneNumber(employee.getPhoneNumber());
+        if(newEmployee.getStatus()==null)
+            newEmployee.setStatus(employee.getStatus());
+        if(newEmployee.getJoinDate()==null)
+            newEmployee.setJoinDate(employee.getJoinDate());
+        if(newEmployee.getLeftDate()==null)
+            newEmployee.setLeftDate(employee.getLeftDate());
+        if(newEmployee.getEmploymentType()==null);
+            newEmployee.setEmploymentType(employee.getEmploymentType());
+        if(newEmployee.getExperience()==null)
+            newEmployee.setExperience(employee.getExperience());
+        if(newEmployee.getPayroll()==null)
+            newEmployee.setPayroll(employee.getPayroll());
+        return employeeRepo.save(newEmployee);
     }
     @Override
     public EmployeeResponse findEntityByIdWithNames(Long id) {
@@ -102,6 +119,9 @@ public class EmployeeService implements EmployeeServiceInterface  {
         employeeResponse.setJoinDate(employee.getJoinDate());
         employeeResponse.setLeftDate(employee.getLeftDate());
         employeeResponse.setPhoneNumber(employee.getPhoneNumber());
+        employeeResponse.setExperience(employee.getExperience());
+        employeeResponse.setEmploymentType(employee.getEmploymentType());
+        employeeResponse.setPayroll(employee.getPayroll());
         return employeeResponse;
     }
 

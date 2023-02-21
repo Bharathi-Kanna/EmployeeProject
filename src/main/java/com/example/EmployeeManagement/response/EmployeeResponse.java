@@ -1,6 +1,7 @@
 package com.example.EmployeeManagement.response;
 
 
+import com.example.EmployeeManagement.entity.entities.Payroll;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,10 @@ public class EmployeeResponse  {
     private LocalDate dateOfBirth;
 
     private String address;
+    private Float experience;
+    private String employmentType;
 
+    private Payroll payroll;
     private String status;
 
     private LocalDate joinDate;
