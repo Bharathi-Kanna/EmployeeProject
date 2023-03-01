@@ -185,7 +185,7 @@ public class EmployeeService implements EmployeeServiceInterface  {
         EmployeeResponse employeeResponse = new EmployeeResponse();
         String departmentName;
         String designationName;
-        employeeResponse.setEmployeeId(employee.getEmployeeId());
+        employeeResponse.setId(employee.getEmployeeId());
         employeeResponse.setName(employee.getName());
         Department department = departmentRepo.findById(employee.getDepartmentId()).orElseThrow(() -> new EntityNotFound("department not found "));
         departmentName = department.getDepartmentName();

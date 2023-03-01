@@ -1,5 +1,8 @@
 package com.example.employeemanagement.designation.controller;
 
+import com.example.employeemanagement.department.entity.Department;
+import com.example.employeemanagement.department.response.DepartmentResponse;
+import com.example.employeemanagement.designation.response.DesignationResponse;
 import com.example.employeemanagement.generics.ControllerInterface;
 import com.example.employeemanagement.designation.entity.Designation;
 import com.example.employeemanagement.designation.services.serviceinterface.DesignationServiceInterface;
@@ -8,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 @RestController
 @CrossOrigin
@@ -16,11 +20,23 @@ public class DesignationController implements ControllerInterface<Designation> {
 
     @Autowired
     private DesignationServiceInterface designationService;
-    @GetMapping("/findAll")
+    //@GetMapping("/findAll")
     @Override
     public ResponseEntity<List<Designation>> findAllEntity() {
-        return new ResponseEntity<>(designationService.findAllEntity(), HttpStatus.OK);
+        return null;
     }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<DesignationResponse>> findAllDesignation(){
+        List<Designation> list = designationService.findAllEntity();
+        List<DesignationResponse> responseList = new ArrayList<>();
+        list.forEach(e -> {
+            DesignationResponse eResponse = new DesignationResponse(e);
+            responseList.add(eResponse);
+        });
+        return new ResponseEntity<List<DesignationResponse>>(responseList, HttpStatus.OK) ;
+    }
+
     @GetMapping("/findById/{id}")
     @Override
     public ResponseEntity<Designation> findEntityById(@PathVariable("id") Long id) {

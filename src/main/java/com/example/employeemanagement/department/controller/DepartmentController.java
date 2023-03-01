@@ -1,11 +1,18 @@
 package com.example.employeemanagement.department.controller;
+import com.example.employeemanagement.department.response.DepartmentResponse;
+import com.example.employeemanagement.employee.entity.Employee;
+import com.example.employeemanagement.employeeproject.entity.EmployeeProject;
 import com.example.employeemanagement.generics.ControllerInterface;
 import com.example.employeemanagement.department.entity.Department;
 import com.example.employeemanagement.department.services.serviceinterface.DepartmentServiceInterface;
+import com.example.employeemanagement.project.entity.Project;
+import com.example.employeemanagement.project.response.ProjectResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 @RestController
 @CrossOrigin
@@ -13,11 +20,25 @@ import java.util.List;
 public class DepartmentController implements ControllerInterface<Department> {
     @Autowired
     private DepartmentServiceInterface departmentService;
-    @GetMapping("/findAll")
+//    @GetMapping("/findAll")
     @Override
     public ResponseEntity<List<Department>> findAllEntity() {
-        return new ResponseEntity(departmentService.findAllEntity(), HttpStatus.OK);
+//
+        return null;
     }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<DepartmentResponse>> findAllDepartment(){
+        List<Department> list = departmentService.findAllEntity();
+        List<DepartmentResponse> responseList = new ArrayList<>();
+        list.forEach(e -> {
+            DepartmentResponse eResponse = new DepartmentResponse(e);
+            responseList.add(eResponse);
+        });
+        return new ResponseEntity<List<DepartmentResponse>>(responseList, HttpStatus.OK) ;
+    }
+
+
     @GetMapping("/findById/{id}")
     @Override
     public ResponseEntity<Department> findEntityById(@PathVariable Long id) {

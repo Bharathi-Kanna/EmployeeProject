@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/employee-project-team")
+@RequestMapping("/employeeProjectTeam")
 public class EmployeeProjectController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class EmployeeProjectController {
     @Autowired
     TeamsServiceInterface teamsServiceInterface;
 
-    @GetMapping("/find-all")
+    @GetMapping("/findAll")
     public ResponseEntity<List<EmployeeProjectResponse>> findAllEntities() {
 
         List<EmployeeProject> list = employeeProjectInterface.findAllEntity();
@@ -54,7 +54,7 @@ public class EmployeeProjectController {
     }
 
     // adds employee to projects and teams
-    @PostMapping("/add-employee-project/{id}")
+    @PostMapping("/add")
     public ResponseEntity<String> addEntities(@RequestBody EmployeeProjectRequest eReq,@PathVariable("id") Long id){
             Employee employee = employeeServicesInterface.findEntityById(eReq.getEmployee_id());
             Project project = projectServiceInterface.findEntityById(eReq.getProject_id());
@@ -71,7 +71,7 @@ public class EmployeeProjectController {
     }
 
     //adds teams to projects
-    @PostMapping("/add-teams-project")
+    @PostMapping("/addTeamProject")
     public ResponseEntity<String> addTeamsProjects(@RequestBody ProjectTeamRequest eReq){
         Teams teams = teamsServiceInterface.findEntityById(eReq.getTeam_id());
         Project project = projectServiceInterface.findEntityById(eReq.getProject_id());

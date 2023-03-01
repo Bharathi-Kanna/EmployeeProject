@@ -117,7 +117,7 @@ public class ProjectController{
     }
 
    // returns all employee in a project
-    @GetMapping("find-all/employee/{id}")
+    @GetMapping("/findAllEmployee/{id}")
     public ResponseEntity<List<ProjectEmpoyeeResponse>> findAllEmployeeProject(@PathVariable Long id){
         Project project = projectServiceInterface.findEntityById(id);
         List<ProjectEmpoyeeResponse> employeeList = new ArrayList<>();
@@ -132,7 +132,7 @@ public class ProjectController{
     }
 
     //return all projects based on status
-    @GetMapping("find-all/status/{status}")
+    @GetMapping("findAll/{status}")
     public ResponseEntity<List<ProjectResponse>> findByStatus(@PathVariable("status") ProjectStatus status){
         List<Project> list = projectServiceInterface.findByStatus(status);
         List<ProjectResponse> responseList = new ArrayList<>();
@@ -169,7 +169,7 @@ public class ProjectController{
 
     //return all teams in project
 
-    @GetMapping("find-all/teams/{id}")
+    @GetMapping("/findAll/teams/{id}")
     public ResponseEntity<List<Teams>> findAllTeams(@PathVariable Long id){
         List<Teams>list = teamsServiceInterface.findByProject(id);
         return new ResponseEntity<List<Teams>>(list, HttpStatus.OK) ;

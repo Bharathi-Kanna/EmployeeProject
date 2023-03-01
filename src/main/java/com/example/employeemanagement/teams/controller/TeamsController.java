@@ -22,7 +22,7 @@ public class TeamsController {
     @Autowired
     TeamsServiceInterface teamsServiceInterface;
 
-    @GetMapping("/find-all")
+    @GetMapping("/findAll")
     public ResponseEntity<List<TeamResponse>> findAllEntities() {
         List<Teams> list = teamsServiceInterface.findAllEntity();
         List<TeamResponse> responseList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class TeamsController {
     }
     //add teams to projects
 
-    @PostMapping("/add-teams")
+    @PostMapping("/add")
     public ResponseEntity<String> addEntity(@RequestBody AddTeamRequest eReq) {
         Teams teams = new Teams();
         teams.setId(eReq.getId());
@@ -51,12 +51,12 @@ public class TeamsController {
         return new ResponseEntity<>("team added",HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-teams/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEntity(@PathVariable Long Id) {
         teamsServiceInterface.deleteById(Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PutMapping("/update/teams/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Teams> updateEntity(@RequestBody Teams entity,@PathVariable("id") Long id) {
         return new ResponseEntity<>(teamsServiceInterface.updateEntity(id,entity),HttpStatus.OK);
     }

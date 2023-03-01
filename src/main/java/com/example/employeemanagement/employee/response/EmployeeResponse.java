@@ -16,8 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeResponse  {
-
-    private Long employeeId;
+    private Long id;
     private String name;
     private String departmentName;
     private String designationName;

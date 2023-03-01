@@ -17,16 +17,16 @@ public class JobsController {
     @Autowired
     JobsService jobsService;
 
-    @PostMapping("/add/jobs")
+    @PostMapping("/add")
     public ResponseEntity<JobsResponse> addEntities(@RequestBody JobsRequest eReq) {
         return new ResponseEntity<>(jobsService.addEntity(eReq), HttpStatus.OK);
     }
-    @GetMapping("/find/all")
+    @GetMapping("/findAll")
     public ResponseEntity<List<JobsResponse>> findAllEntity(){
         return new ResponseEntity<List<JobsResponse>>(jobsService.findAllEntity(),HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<JobsResponse> findById(@PathVariable(name = "id")Long id){
         return new ResponseEntity<>(jobsService.findById(id),HttpStatus.OK);
     }

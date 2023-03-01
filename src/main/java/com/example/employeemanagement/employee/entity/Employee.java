@@ -24,19 +24,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="emp_id")
     private Long employeeId;
-    @NotNull
     @Column(name="emp_name")
     private String name;
-    @NotNull
     @Column(name="dep_id")
     private Long departmentId;
-    @NotNull
     @Column(name="des_id")
     private Long designationId;
-    @NotNull
     @Column(name="emp_phoneNum")
     private String phoneNumber;
-    @NotNull
     @Column(name="emp_experience")
     private Float experience;
     @Email
@@ -46,16 +41,12 @@ public class Employee {
     private LocalDate dateOfBirth;
     @Column(name="emp_address")
     private String address;
-    @NotNull
     @Column(name="emp_type")
     private String employmentType;
-    @NotNull
     @Column(name="emp_status")
     private String status;
-    @NotNull
     @Column(name="emp_join_date")
     private LocalDate joinDate;
-
     @OneToMany(mappedBy = "employee")
     private List<EmployeeProject> employeeProjects;
     @OneToOne(cascade = CascadeType.ALL)
