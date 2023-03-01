@@ -3,6 +3,7 @@ package com.example.employeemanagement.jobs.service;
 
 import com.example.employeemanagement.jobs.requests.AddEmpJobRequest;
 import com.example.employeemanagement.jobs.requests.JobsRequest;
+import com.example.employeemanagement.jobs.response.JobsEmployeeResponse;
 import com.example.employeemanagement.jobs.response.JobsResponse;
 
 import java.util.List;
@@ -17,4 +18,8 @@ public interface JobsService {
     public JobsResponse addEntity(JobsRequest jobsRequest);
 
     public JobsResponse addEmpJob(AddEmpJobRequest addEmpJobRequest);
+
+    public List<JobsEmployeeResponse> findAllEmp(Long id);
+
+    JobsResponse removeEmp(AddEmpJobRequest eReq);
 }

@@ -3,6 +3,7 @@ package com.example.employeemanagement.jobs.controller;
 import com.example.employeemanagement.jobs.entity.Jobs;
 import com.example.employeemanagement.jobs.requests.AddEmpJobRequest;
 import com.example.employeemanagement.jobs.requests.JobsRequest;
+import com.example.employeemanagement.jobs.response.JobsEmployeeResponse;
 import com.example.employeemanagement.jobs.response.JobsResponse;
 import com.example.employeemanagement.jobs.service.JobsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,19 @@ public class JobsController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<JobsResponse> findById(@PathVariable(name = "id")Long id){
         return new ResponseEntity<>(jobsService.findById(id),HttpStatus.OK);
+    }
+
+    //find all employees assinged to the job
+    @GetMapping("/findAll/employee/{id}")
+    public ResponseEntity<List<JobsEmployeeResponse>> findAllEmp(@PathVariable(name="id")Long id){
+        List<JobsEmployeeResponse> jobsEmployeeResponse = jobsService.findAllEmp(id);
+        return new ResponseEntity<List<JobsEmployeeResponse>>(jobsEmployeeResponse,HttpStatus.OK);
+    }
+
+    //remove employees from the job
+    @PutMapping("/delete/employee")
+    public ResponseEntity<JobsResponse> removeEmp(@RequestBody AddEmpJobRequest eReq){
+        return new ResponseEntity<JobsResponse>(jobsService.removeEmp(eReq),HttpStatus.OK);
     }
 
 //    @PutMapping("update/jobs")

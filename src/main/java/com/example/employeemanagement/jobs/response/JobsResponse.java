@@ -40,6 +40,5 @@ public class JobsResponse {
         this.ratePerHour = jobs.getRatePerHour();
         this.billable = jobs.getBillable();
         this.job_Status = jobs.getJob_Status();
-
     }
 }
