@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,9 +16,9 @@ public class JobsResponse {
 
     private String jobName;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate endDate;
 
     private int estimatedHours;
 
@@ -38,5 +40,6 @@ public class JobsResponse {
         this.ratePerHour = jobs.getRatePerHour();
         this.billable = jobs.getBillable();
         this.job_Status = jobs.getJob_Status();
+
     }
 }

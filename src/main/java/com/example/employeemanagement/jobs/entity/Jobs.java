@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -24,10 +27,10 @@ public class Jobs {
     private String jobName;
 
     @Column(name="start_date")
-    private String startDate;
+    private LocalDate startDate;
 
     @Column(name="end_date")
-    private String endDate;
+    private LocalDate endDate;
 
     @Column(name="estimated_hours")
     private int estimatedHours;
@@ -43,8 +46,8 @@ public class Jobs {
 
     @Column(name="job_status")
     private String job_Status;
-
     private Long project_id;
+    private List<Long> employee_id;
 
     public Jobs(JobsRequest jobsRequest){
         this.jobName = jobsRequest.getJobName();
@@ -54,7 +57,9 @@ public class Jobs {
         this.loggedHours = jobsRequest.getEstimatedHours();
         this.ratePerHour = jobsRequest.getRatePerHour();
         this.billable = jobsRequest.getBillable();
-        this.job_Status = jobsRequest.getJob_Status();
+        this.job_Status = jobsRequest.getJobStatus();
+        this.project_id = jobsRequest.getProjectId();
     }
+
 
 }

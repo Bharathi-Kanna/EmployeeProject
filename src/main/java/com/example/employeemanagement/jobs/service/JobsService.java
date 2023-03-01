@@ -1,6 +1,7 @@
 package com.example.employeemanagement.jobs.service;
 
 
+import com.example.employeemanagement.jobs.requests.AddEmpJobRequest;
 import com.example.employeemanagement.jobs.requests.JobsRequest;
 import com.example.employeemanagement.jobs.response.JobsResponse;
 
@@ -14,4 +15,6 @@ public interface JobsService {
     public JobsResponse updateEntity(Long Id);
 
     public JobsResponse addEntity(JobsRequest jobsRequest);
+
+    public JobsResponse addEmpJob(AddEmpJobRequest addEmpJobRequest);
 }

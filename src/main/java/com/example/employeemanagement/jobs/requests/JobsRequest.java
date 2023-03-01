@@ -3,6 +3,8 @@ package com.example.employeemanagement.jobs.requests;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Setter
 @Getter
 public class JobsRequest {
@@ -10,9 +12,9 @@ public class JobsRequest {
 
     private String jobName;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate endDate;
 
     private int estimatedHours;
 
@@ -20,7 +22,10 @@ public class JobsRequest {
 
     private String billable;
 
-    private String job_Status;
+    private String jobStatus;
 
+    private Long projectId;
+
+    private Long employeeId;
 
 }
