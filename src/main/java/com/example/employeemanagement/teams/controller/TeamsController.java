@@ -1,5 +1,7 @@
 package com.example.employeemanagement.teams.controller;
 
+import com.example.employeemanagement.employee.response.EmployeeResponse;
+import com.example.employeemanagement.employee.response.EmployeeResponseSimple;
 import com.example.employeemanagement.employeeproject.entity.EmployeeProject;
 import com.example.employeemanagement.project.entity.Project;
 import com.example.employeemanagement.teams.entity.Teams;
@@ -61,5 +63,9 @@ public class TeamsController {
         return new ResponseEntity<>(teamsServiceInterface.updateEntity(id,entity),HttpStatus.OK);
     }
 
-
+    //returns all employees in the team
+    @GetMapping("/findAll/employee/{id}")
+    public ResponseEntity<List<EmployeeResponseSimple>> findAllEmployeeTeam(@PathVariable("id") Long id){
+        return new ResponseEntity<List<EmployeeResponseSimple>>(teamsServiceInterface.findALlEmployeeTeam(id),HttpStatus.OK);
+    }
 }
