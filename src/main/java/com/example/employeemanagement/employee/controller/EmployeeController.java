@@ -76,4 +76,8 @@ public class EmployeeController implements ControllerInterface<Employee>{
         employeeServices.deleteEmployeeCertificate(empId,certificateId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/bySalary")
+    public ResponseEntity<List<String>> sortBySalary(){
+        return new ResponseEntity<>(employeeServices.sortBySalary(),HttpStatus.OK);
+    }
 }

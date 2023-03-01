@@ -84,6 +84,10 @@ public class EmployeeService implements EmployeeServiceInterface  {
         Employee employee = findEntityById(id);
         return findEmployeeResponse(employee);
     }
+    @Override
+    public List<String> sortBySalary(){
+        return employeeRepo.sortBySalary();
+    }
 
     @Override
     public Employee addEntity(Employee employee){

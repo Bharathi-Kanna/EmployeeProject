@@ -18,6 +18,7 @@ public interface EmployeeServiceInterface extends ServiceInterface<Employee> {
     EmployeeCertificate addCertificate(EmployeeCertificate employeeCertificate);
     void deleteEmployeeSkills(Long empId,Long skillId);
     void deleteEmployeeCertificate(Long empId,Long certificateId);
+    List<String> sortBySalary();
 
 
 
