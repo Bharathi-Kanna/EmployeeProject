@@ -54,7 +54,7 @@ public class EmployeeProjectController {
     }
 
     // adds employee to projects and teams
-    @PostMapping("/add")
+    @PostMapping("/add/{id}")
     public ResponseEntity<String> addEntities(@RequestBody EmployeeProjectRequest eReq,@PathVariable("id") Long id){
             Employee employee = employeeServicesInterface.findEntityById(eReq.getEmployee_id());
             Project project = projectServiceInterface.findEntityById(eReq.getProject_id());
