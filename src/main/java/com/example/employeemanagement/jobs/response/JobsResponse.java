@@ -30,6 +30,10 @@ public class JobsResponse {
 
     private String job_Status;
 
+    private Long projectId;
+
+    private String projectName;
+
     public JobsResponse(Jobs jobs) {
         this.id = jobs.getId();
         this.jobName = jobs.getJobName();
@@ -40,5 +44,6 @@ public class JobsResponse {
         this.ratePerHour = jobs.getRatePerHour();
         this.billable = jobs.getBillable();
         this.job_Status = jobs.getJob_Status();
+        this.projectId = jobs.getProject_id();
     }
 }

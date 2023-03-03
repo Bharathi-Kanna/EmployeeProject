@@ -10,6 +10,9 @@ import com.example.employeemanagement.jobs.requests.AddEmpJobRequest;
 import com.example.employeemanagement.jobs.requests.JobsRequest;
 import com.example.employeemanagement.jobs.response.JobsEmployeeResponse;
 import com.example.employeemanagement.jobs.response.JobsResponse;
+import com.example.employeemanagement.project.entity.Project;
+import com.example.employeemanagement.project.exception.ProjectNotFound;
+import com.example.employeemanagement.project.repository.ProjectRepo;
 import org.hibernate.action.internal.EntityActionVetoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,9 @@ public class JobsServiceImpl implements JobsService{
 
     @Autowired
     EmployeeRepo employeeRepo;
+
+    @Autowired
+    ProjectRepo projectRepo;
     @Override
     public List<JobsResponse> findAllEntity(){
 
@@ -32,6 +38,9 @@ public class JobsServiceImpl implements JobsService{
         List<JobsResponse> jobsResponses = new ArrayList<>();
         list.forEach(e -> {
             JobsResponse eResponse = new JobsResponse(e);
+            if(e.getProject_id() != null){
+            Project project = projectRepo.findById(e.getProject_id()).orElseThrow(()-> new ProjectNotFound("project not found with id"));
+            eResponse.setProjectName(project.getProjectName());}
             jobsResponses.add(eResponse);
         });
         return jobsResponses;
