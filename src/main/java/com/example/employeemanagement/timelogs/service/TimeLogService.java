@@ -13,7 +13,7 @@ public interface TimeLogService {
 
     public TimeLogResponse findById(Long Id);
 
-    public TimeLogResponse updateEntity(Long Id);
+    public TimeLogResponse updateEntity(TimeLogRequest eReq, Long id);
 
     public String addEntity(TimeLogRequest timeLogRequest);
 

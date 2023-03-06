@@ -5,12 +5,15 @@ import com.example.employeemanagement.employee.repository.EmployeeRepo;
 import com.example.employeemanagement.exception.EntityNotFound;
 import com.example.employeemanagement.project.entity.Project;
 import com.example.employeemanagement.project.repository.ProjectRepo;
+import com.example.employeemanagement.project.requests.UpdateProjectRequest;
 import com.example.employeemanagement.timelogs.entity.TimeLogs;
 import com.example.employeemanagement.timelogs.repository.TimeLogRepo;
 import com.example.employeemanagement.timelogs.request.TimeLogRequest;
 import com.example.employeemanagement.timelogs.response.TimeLogResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -51,7 +54,7 @@ public class TimeLogsImpli implements TimeLogService{
     }
 
     @Override
-    public TimeLogResponse updateEntity(Long Id) {
+    public TimeLogResponse updateEntity(TimeLogRequest eReq,Long Id) {
         return null;
     }
 
