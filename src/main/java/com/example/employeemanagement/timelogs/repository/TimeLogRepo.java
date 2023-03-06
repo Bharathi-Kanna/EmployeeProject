@@ -1,4 +1,10 @@
 package com.example.employeemanagement.timelogs.repository;
 
-public class TimeLogRepo {
+import com.example.employeemanagement.timelogs.entity.TimeLogs;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TimeLogRepo extends JpaRepository<TimeLogs,Long> {
+
 }
