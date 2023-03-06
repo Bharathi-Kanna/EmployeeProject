@@ -12,6 +12,7 @@ import com.example.employeemanagement.timelogs.response.TimeLogResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,16 +56,16 @@ public class TimeLogsImpli implements TimeLogService{
     }
 
     @Override
-    public TimeLogResponse addEntity(TimeLogRequest eReq) {
+    public String addEntity(TimeLogRequest eReq) {
         TimeLogs timeLogs = new TimeLogs();
         timeLogs.setEmployeeId(eReq.getEmployeeId());
         timeLogs.setProjectId(eReq.getProjectId());
-        timeLogs.setLogTime(eReq.getLogTime());
+        timeLogs.setLogTime(LocalDateTime.now());
         timeLogs.setStartDate(eReq.getStartDate());
         timeLogs.setEndDate(eReq.getEndDate());
         timeLogs.setLoggedHours(eReq.getLoggedHours());
         timeLogRepo.save(timeLogs);
-        return new TimeLogResponse(timeLogs);
+        return "Time Log Added";
     }
 
 

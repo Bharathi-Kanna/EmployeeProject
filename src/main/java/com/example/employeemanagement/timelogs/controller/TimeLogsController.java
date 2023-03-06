@@ -19,8 +19,8 @@ public class TimeLogsController {
     TimeLogService timeLogService;
 
     @PostMapping("/add")
-    public ResponseEntity<TimeLogResponse> addEntities(@RequestBody TimeLogRequest eReq) {
-        return new ResponseEntity<TimeLogResponse>(timeLogService.addEntity(eReq), HttpStatus.OK);
+    public ResponseEntity<String> addEntities(@RequestBody TimeLogRequest eReq) {
+        return new ResponseEntity<String>(timeLogService.addEntity(eReq), HttpStatus.OK);
     }
     @GetMapping("/findAll")
     public ResponseEntity<List<TimeLogResponse>> findAllEntity(){

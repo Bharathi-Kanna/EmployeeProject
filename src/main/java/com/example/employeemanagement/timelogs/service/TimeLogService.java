@@ -15,7 +15,7 @@ public interface TimeLogService {
 
     public TimeLogResponse updateEntity(Long Id);
 
-    public TimeLogResponse addEntity(TimeLogRequest timeLogRequest);
+    public String addEntity(TimeLogRequest timeLogRequest);
 
 }
 

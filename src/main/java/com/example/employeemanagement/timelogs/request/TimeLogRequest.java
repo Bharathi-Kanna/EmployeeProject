@@ -13,8 +13,6 @@ public class TimeLogRequest {
 
     private Long employeeId;
 
-    private LocalDateTime logTime;
-
     private LocalDate startDate;
 
     private LocalDate endDate;
