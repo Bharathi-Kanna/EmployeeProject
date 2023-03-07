@@ -20,7 +20,6 @@ public class Payroll {
     private Long payrollId;
     private Long bonus;
     private Long salary;
-
     private String status;
     private String paymentMode;
     private Long totalSalary;
