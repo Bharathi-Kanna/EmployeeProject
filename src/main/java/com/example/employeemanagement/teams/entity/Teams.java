@@ -14,7 +14,6 @@ public class Teams {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "team_id")
     Long Id;
-
     @Column(name = "team_name")
     String name;
     //@OneToMany(mappedBy = "teams")
