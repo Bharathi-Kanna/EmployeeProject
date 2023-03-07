@@ -15,7 +15,7 @@ public class TimeLogs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "team_id")
+    @Column(name = "id")
     private Long Id;
 
     @Column(name="project_id")

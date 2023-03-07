@@ -71,6 +71,4 @@ public class TimeLogsImpli implements TimeLogService{
         return "Time Log Added";
     }
 
-
-
 }
