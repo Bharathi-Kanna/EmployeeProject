@@ -46,7 +46,8 @@ public class ProjectController{
         project.setStatus(eReq.getStatus());
         project.setType(eReq.getType());
         project.setStartDate(eReq.getStartDate());
-        project.setEndDate(eReq.getEndDate());
+        project.setActualDate(eReq.getActualDate());
+        project.setPlannedDate(eReq.getPlannedDate());
         project.setValuation(eReq.getValuation());
         projectServiceInterface.addEntity(project);
         return new ResponseEntity<>(project, HttpStatus.OK);
@@ -72,9 +73,13 @@ public class ProjectController{
             //String date = simpleDateFormat.format(eReq.getStartDate());
             project.setStartDate(eReq.getStartDate());
         }
-        if(eReq.getEndDate()!=null){
+        if(eReq.getActualDate()!=null){
             //String date = simpleDateFormat.format(eReq.getEndDate());
-            project.setEndDate(eReq.getEndDate());
+            project.setActualDate(eReq.getActualDate());
+        }
+        if(eReq.getPlannedDate()!=null){
+            //String date = simpleDateFormat.format(eReq.getEndDate());
+            project.setPlannedDate(eReq.getPlannedDate());
         }
         if(eReq.getValuation()!=null){
             project.setValuation(eReq.getValuation());

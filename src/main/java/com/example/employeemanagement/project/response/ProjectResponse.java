@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Setter
@@ -17,9 +18,9 @@ public class ProjectResponse {
     private String projectName;
     private ProjectStatus status;
     private ProjectType type;
-    private String startDate;
-    private String endDate;
-
+    private LocalDate startDate;
+    private LocalDate actualDate;
+    private LocalDate plannedDate;
     private Long valuation;
     private List<Long> employee_id;
 
@@ -31,7 +32,8 @@ public class ProjectResponse {
         this.status = project.getStatus();
         this.type = project.getType();
         this.startDate = project.getStartDate();
-        this.endDate = project.getEndDate();
+        this.actualDate = project.getActualDate();
+        this.plannedDate = project.getPlannedDate();
         this.valuation = project.getValuation();
         this.teams_id = project.getTeams_id();
     }

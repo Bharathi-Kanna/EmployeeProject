@@ -5,6 +5,8 @@ import com.example.employeemanagement.project.Enums.ProjectType;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class AddProjectRequest {
@@ -14,9 +16,11 @@ public class AddProjectRequest {
 
     private ProjectType type;
 
-    private String startDate;
+    private LocalDate startDate;
 
-    private String endDate;
+    private LocalDate actualDate;
+
+    private LocalDate plannedDate;
 
     private Long valuation;
 

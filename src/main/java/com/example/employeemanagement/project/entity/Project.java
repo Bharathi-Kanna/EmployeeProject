@@ -8,6 +8,7 @@ import com.example.employeemanagement.project.requests.UpdateProjectRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -33,10 +34,11 @@ public class Project{
     ProjectType type;
 
     @Column(name="start_date")
-    String startDate;
-    @Column(name="end_date")
-    String endDate;
-
+    LocalDate startDate;
+    @Column(name="actual_date")
+    LocalDate actualDate;
+    @Column(name="planned_date")
+    LocalDate plannedDate;
     @Column(name="project_valuation")
     Long valuation;
 

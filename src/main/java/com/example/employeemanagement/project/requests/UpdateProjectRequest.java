@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @ToString
@@ -14,8 +16,8 @@ public class UpdateProjectRequest {
     private Long id;
     private ProjectStatus status;
     private ProjectType type;
-    private String startDate;
-    private String endDate;
-
+    private LocalDate startDate;
+    private LocalDate actualDate;
+    private LocalDate plannedDate;
     private Long valuation;
 }
