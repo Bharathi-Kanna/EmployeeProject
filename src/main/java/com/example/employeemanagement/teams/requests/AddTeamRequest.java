@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 public class AddTeamRequest {
     private Long id;
-    private Long project_id;
+    private Long projectId;
     private String name;
 
 }

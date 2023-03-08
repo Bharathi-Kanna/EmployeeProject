@@ -20,4 +20,5 @@ public class UpdateProjectRequest {
     private LocalDate actualDate;
     private LocalDate plannedDate;
     private Long valuation;
+
 }

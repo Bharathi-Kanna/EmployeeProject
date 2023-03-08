@@ -7,9 +7,10 @@ import lombok.Setter;
 @Setter
 public class EmployeeProjectRequest {
 
-    private long employee_id;
+    private long employeeId;
 
-    private long project_id;
+    private long projectId;
 
-    private long team_id;
+    private long teamId;
+
 }

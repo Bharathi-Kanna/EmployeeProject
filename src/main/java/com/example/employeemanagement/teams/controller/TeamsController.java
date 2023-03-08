@@ -48,7 +48,7 @@ public class TeamsController {
         Teams teams = new Teams();
         teams.setId(eReq.getId());
         teams.setName(eReq.getName());
-        teams.setProject(eReq.getProject_id());
+        teams.setProject(eReq.getProjectId());
         teamsServiceInterface.addEntity(teams);
         return new ResponseEntity<>("team added",HttpStatus.OK);
     }
