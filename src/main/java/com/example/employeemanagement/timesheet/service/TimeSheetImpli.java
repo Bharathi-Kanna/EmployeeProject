@@ -12,6 +12,8 @@ import com.example.employeemanagement.timesheet.request.TimeSheetRequest;
 import com.example.employeemanagement.timesheet.response.TimeSheetResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +58,28 @@ public class TimeSheetImpli implements TimeSheetService{
     }
 
     @Override
-    public TimeSheetResponse updateEntity(TimeSheetRequest eReq, Long id) {
-       return null;
+    public String updateEntity(TimeSheetRequest eReq, Long id) {
+        TimeSheet timeSheet = timeSheetRepo.findById(eReq.getId()).orElseThrow(()->new EntityNotFound("timesheet not found with id: " + id));
+        if(eReq.getId()!=null){
+            timeSheet.setId(eReq.getId());
+        }
+        if(eReq.getEmployeeId()!=null){
+            timeSheet.setEmployeeId(eReq.getEmployeeId());
+        }
+        if(eReq.getLogTime()!=null){
+            timeSheet.setLogTime(eReq.getLogTime());
+        }
+        if(eReq.getProjectId()!=null){
+            timeSheet.setProjectId(eReq.getProjectId());
+        }
+        if(eReq.getTotalCost()!=null){
+            timeSheet.setTotalCost(eReq.getTotalCost());
+        }
+        if(eReq.getHoursWorked()!=null){
+            timeSheet.setHoursWorked(eReq.getHoursWorked());
+        }
+        timeSheetRepo.save(timeSheet);
+        return "relation saved";
     }
 
     @Override

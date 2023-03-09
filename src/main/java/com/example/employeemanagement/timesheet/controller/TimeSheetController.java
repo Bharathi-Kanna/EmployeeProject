@@ -28,4 +28,9 @@ public class TimeSheetController {
     public ResponseEntity<List<TimeSheetResponse>> findAllEntity(){
         return new ResponseEntity<List<TimeSheetResponse>>(timeSheetService.findAllEntity(),HttpStatus.OK);
     }
+    @GetMapping("/update/{id}")
+    public ResponseEntity<String> updateEntities(@RequestBody TimeSheetRequest eReq,@PathVariable(name="id") Long id){
+        return new ResponseEntity<String>(timeSheetService.updateEntity(eReq,id), HttpStatus.OK);
+    }
+
 }

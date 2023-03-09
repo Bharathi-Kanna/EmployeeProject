@@ -58,6 +58,7 @@ public class TeamsController {
         teamsServiceInterface.deleteById(Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Teams> updateEntity(@RequestBody Teams entity,@PathVariable("id") Long id) {
         return new ResponseEntity<>(teamsServiceInterface.updateEntity(id,entity),HttpStatus.OK);
@@ -68,4 +69,5 @@ public class TeamsController {
     public ResponseEntity<List<EmployeeResponseSimple>> findAllEmployeeTeam(@PathVariable("id") Long id){
         return new ResponseEntity<List<EmployeeResponseSimple>>(teamsServiceInterface.findALlEmployeeTeam(id),HttpStatus.OK);
     }
+
 }

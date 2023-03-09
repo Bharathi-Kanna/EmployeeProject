@@ -10,7 +10,7 @@ public interface TimeSheetService {
 
     public TimeSheetResponse findById(Long Id);
 
-    public TimeSheetResponse updateEntity(TimeSheetRequest eReq, Long id);
+    public String updateEntity(TimeSheetRequest eReq, Long id);
 
     public String addEntity(TimeSheetRequest timeSheetRequest);
 }
