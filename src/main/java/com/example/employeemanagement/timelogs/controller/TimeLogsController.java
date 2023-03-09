@@ -22,8 +22,11 @@ public class TimeLogsController {
     public ResponseEntity<String> addEntities(@RequestBody TimeLogRequest eReq) {
         return new ResponseEntity<String>(timeLogService.addEntity(eReq), HttpStatus.OK);
     }
+
     @GetMapping("/findAll")
     public ResponseEntity<List<TimeLogResponse>> findAllEntity(){
         return new ResponseEntity<List<TimeLogResponse>>(timeLogService.findAllEntity(),HttpStatus.OK);
     }
+
+
 }

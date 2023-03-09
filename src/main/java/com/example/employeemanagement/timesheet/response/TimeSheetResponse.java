@@ -23,6 +23,7 @@ public class TimeSheetResponse {
         this.Id = timeSheet.getId();
         this.employeeId= timeSheet.getEmployeeId();
         this.projectId= timeSheet.getProjectId();
+        this.logTime= timeSheet.getLogTime();
         this.hoursWorked = timeSheet.getHoursWorked();
         this.totalCost = timeSheet.getTotalCost();
     }
