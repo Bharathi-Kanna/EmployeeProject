@@ -1,4 +1,5 @@
 package com.example.employeemanagement.employee.services.entityservice;
+import com.example.employeemanagement.employee.response.DesignationEmployeeResponse;
 import com.example.employeemanagement.exception.EntityNotFound;
 import com.example.employeemanagement.certificate.entity.Certificate;
 import com.example.employeemanagement.department.entity.Department;
@@ -87,6 +88,25 @@ public class EmployeeService implements EmployeeServiceInterface  {
     @Override
     public List<String> sortBySalary(){
         return employeeRepo.sortBySalary();
+    }
+
+    @Override
+    public List<DesignationEmployeeResponse> findByDesignation() {
+        List<DesignationEmployeeResponse> designationEmployeeResponseList = new ArrayList<>();
+        List<Designation> designationList = designationRepo.findAll();
+        List<Employee> employeeList = findAllEntity();
+        designationList.forEach(designation -> {
+            DesignationEmployeeResponse designationEmployeeResponse = new DesignationEmployeeResponse();
+            designationEmployeeResponse.setDesignationId(designation.getDesignationId());
+            List<Long> empIds=new ArrayList<>();
+            employeeList.forEach(employee -> {
+                if(employee.getDesignationId()==designation.getDesignationId())
+                    empIds.add(employee.getEmployeeId());
+            });
+            designationEmployeeResponse.setEmployeeList(empIds);
+            designationEmployeeResponseList.add(designationEmployeeResponse);
+        });
+        return designationEmployeeResponseList;
     }
 
     @Override

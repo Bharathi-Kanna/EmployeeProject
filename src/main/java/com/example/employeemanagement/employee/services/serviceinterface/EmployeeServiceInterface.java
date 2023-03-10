@@ -1,6 +1,7 @@
 package com.example.employeemanagement.employee.services.serviceinterface;
 
 import com.example.employeemanagement.employee.entity.Employee;
+import com.example.employeemanagement.employee.response.DesignationEmployeeResponse;
 import com.example.employeemanagement.relations.employeecertificate.entity.EmployeeCertificate;
 import com.example.employeemanagement.relations.employeeskills.entity.EmployeeSkills;
 import com.example.employeemanagement.employee.response.EmployeeResponse;
@@ -19,6 +20,7 @@ public interface EmployeeServiceInterface extends ServiceInterface<Employee> {
     void deleteEmployeeSkills(Long empId,Long skillId);
     void deleteEmployeeCertificate(Long empId,Long certificateId);
     List<String> sortBySalary();
+    List<DesignationEmployeeResponse> findByDesignation();
 
 
 
