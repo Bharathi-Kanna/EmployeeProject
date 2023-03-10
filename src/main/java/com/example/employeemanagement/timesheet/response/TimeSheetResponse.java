@@ -4,6 +4,7 @@ import com.example.employeemanagement.timesheet.entity.TimeSheet;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,6 +17,8 @@ public class TimeSheetResponse {
     private Long projectId;
     private Long hoursWorked;
     private LocalDateTime logTime;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Long totalCost;
 
 
@@ -26,5 +29,7 @@ public class TimeSheetResponse {
         this.logTime= timeSheet.getLogTime();
         this.hoursWorked = timeSheet.getHoursWorked();
         this.totalCost = timeSheet.getTotalCost();
+        this.startDate = timeSheet.getStartDate();
+        this.endDate = timeSheet.getEndDate();
     }
 }

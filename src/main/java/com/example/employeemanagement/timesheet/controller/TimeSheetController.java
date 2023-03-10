@@ -34,5 +34,4 @@ public class TimeSheetController {
     public ResponseEntity<String> updateEntities(@RequestBody TimeSheetRequest eReq,@PathVariable(name="id") Long id){
         return new ResponseEntity<String>(timeSheetService.updateEntity(eReq,id), HttpStatus.OK);
     }
-
 }

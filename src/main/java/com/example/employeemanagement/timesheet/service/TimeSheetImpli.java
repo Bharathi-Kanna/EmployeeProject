@@ -56,7 +56,6 @@ public class TimeSheetImpli implements TimeSheetService{
         timeSheetResponse.setProjectName(project.getProjectName());
         return timeSheetResponse;
     }
-
     @Override
     public String updateEntity(TimeSheetRequest eReq, Long id) {
         TimeSheet timeSheet = timeSheetRepo.findById(eReq.getId()).orElseThrow(()->new EntityNotFound("timesheet not found with id: " + id));
@@ -78,6 +77,12 @@ public class TimeSheetImpli implements TimeSheetService{
         if(eReq.getHoursWorked()!=null){
             timeSheet.setHoursWorked(eReq.getHoursWorked());
         }
+        if(eReq.getEndDate()!=null){
+            timeSheet.setEndDate(eReq.getEndDate());
+        }
+        if(eReq.getStartDate()!=null){
+            timeSheet.setStartDate(eReq.getStartDate());
+        }
         timeSheetRepo.save(timeSheet);
         return "relation saved";
     }
@@ -90,6 +95,8 @@ public class TimeSheetImpli implements TimeSheetService{
         timeSheet.setLogTime(LocalDateTime.now());
         timeSheet.setHoursWorked(eReq.getHoursWorked());
         timeSheet.setTotalCost(eReq.getTotalCost());
+        timeSheet.setEndDate(eReq.getEndDate());
+        timeSheet.setStartDate(eReq.getStartDate());
         timeSheetRepo.save(timeSheet);
         return "time sheet Added";
     }

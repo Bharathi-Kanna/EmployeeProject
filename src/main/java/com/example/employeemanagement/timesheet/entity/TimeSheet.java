@@ -4,6 +4,7 @@ package com.example.employeemanagement.timesheet.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,6 +27,13 @@ public class TimeSheet {
     private LocalDateTime logTime;
     @Column(name="totalCost")
     private Long totalCost;
+
+    @Column(name="start_date")
+    private LocalDate startDate;
+
+    @Column(name="end_date")
+    private LocalDate endDate;
+
     private List<Long> jobsId;
 
 }

@@ -37,20 +37,9 @@ public class ProjectController{
     @Autowired
     TeamsServiceInterface teamsServiceInterface;
     @PostMapping("/add")
-    public ResponseEntity<Project> addEntities(@RequestBody AddProjectRequest eReq) {
-        String pattern = "MM-dd-yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        Project project = new Project(eReq);
-        //String startDate = simpleDateFormat.format(eReq.getStartDate());
-        //String endDate = simpleDateFormat.format(eReq.getEndDate());
-        project.setStatus(eReq.getStatus());
-        project.setType(eReq.getType());
-        project.setStartDate(eReq.getStartDate());
-        project.setActualDate(eReq.getActualDate());
-        project.setPlannedDate(eReq.getPlannedDate());
-        project.setValuation(eReq.getValuation());
-        projectServiceInterface.addEntity(project);
-        return new ResponseEntity<>(project, HttpStatus.OK);
+    public ResponseEntity<String> addEntities(@RequestBody AddProjectRequest eReq) {
+        projectServiceInterface.addEntities(eReq);
+        return new ResponseEntity<>("project added", HttpStatus.OK);
     }
 
 
@@ -88,23 +77,12 @@ public class ProjectController{
         return new ResponseEntity<>("project updated", HttpStatus.OK);
     }
 
+
     //returns all project with details
     @GetMapping("/findAll")
     public ResponseEntity<List<ProjectResponse>> findAllEntities() {
-        List<Project> list = projectServiceInterface.findAllEntity();
-        List<ProjectResponse> responseList = new ArrayList<>();
-        list.forEach(e -> {
-            ProjectResponse eResponse = new ProjectResponse(e);
-            List<Long> emp_id = new ArrayList<>();
-            for(EmployeeProject d : e.getEmployeeProjects()){
-                Employee employee = d.getEmployee();
-                emp_id.add(employee.getEmployeeId());
-            }
-            eResponse.setEmployee_id(emp_id);
-            responseList.add(eResponse);
-        });
-
-        return new ResponseEntity<List<ProjectResponse>>(responseList, HttpStatus.OK) ;
+        List<ProjectResponse> responseList = projectServiceInterface.findAllEntities();
+        return new ResponseEntity<List<ProjectResponse>>(responseList, HttpStatus.OK);
     }
 
     //returns details of project
