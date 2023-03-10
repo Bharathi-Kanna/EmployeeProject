@@ -8,6 +8,7 @@ import com.example.employeemanagement.project.entity.Project;
 import com.example.employeemanagement.project.exception.ProjectNotFound;
 import com.example.employeemanagement.project.repository.ProjectRepo;
 import com.example.employeemanagement.project.requests.AddProjectRequest;
+import com.example.employeemanagement.project.requests.UpdateProjectRequest;
 import com.example.employeemanagement.project.response.ProjectResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +52,33 @@ public class ProjectService implements ProjectServiceInterface {
         project.setActualDate(eReq.getActualDate());
         project.setPlannedDate(eReq.getPlannedDate());
         project.setValuation(eReq.getValuation());
+        return projectRepo.save(project);
+    }
+
+    @Override
+    public Project updateEntities(Long id, UpdateProjectRequest eReq) {
+        Project project = projectRepo.findById(eReq.getId()).orElseThrow(() -> new ProjectNotFound("project nod found with" + id));;
+        if(eReq.getName()!=null){
+            project.setProjectName(eReq.getName());
+        }
+        if(eReq.getStatus()!=null){
+            project.setStatus(eReq.getStatus());
+        }
+        if(eReq.getType()!=null){
+            project.setType(eReq.getType());
+        }
+        if(eReq.getStartDate()!=null){
+            project.setStartDate(eReq.getStartDate());
+        }
+        if(eReq.getActualDate()!=null){
+            project.setActualDate(eReq.getActualDate());
+        }
+        if(eReq.getPlannedDate()!=null){
+            project.setPlannedDate(eReq.getPlannedDate());
+        }
+        if(eReq.getValuation()!=null){
+            project.setValuation(eReq.getValuation());
+        }
         return projectRepo.save(project);
     }
 

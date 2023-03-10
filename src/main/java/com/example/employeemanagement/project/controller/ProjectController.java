@@ -41,42 +41,12 @@ public class ProjectController{
         projectServiceInterface.addEntities(eReq);
         return new ResponseEntity<>("project added", HttpStatus.OK);
     }
-
-
+    
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateEntities(@RequestBody UpdateProjectRequest eReq ,@PathVariable("id") Long id) {
-        Project project = projectServiceInterface.findEntityById(eReq.getId());
-//        String pattern = "MM-dd-yyyy";
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-          System.out.println(eReq);
-        if(eReq.getName()!=null){
-            project.setProjectName(eReq.getName());
-        }
-        if(eReq.getStatus()!=null){
-            project.setStatus(eReq.getStatus());
-        }
-        if(eReq.getType()!=null){
-            project.setType(eReq.getType());
-        }
-        if(eReq.getStartDate()!=null){
-            //String date = simpleDateFormat.format(eReq.getStartDate());
-            project.setStartDate(eReq.getStartDate());
-        }
-        if(eReq.getActualDate()!=null){
-            //String date = simpleDateFormat.format(eReq.getEndDate());
-            project.setActualDate(eReq.getActualDate());
-        }
-        if(eReq.getPlannedDate()!=null){
-            //String date = simpleDateFormat.format(eReq.getEndDate());
-            project.setPlannedDate(eReq.getPlannedDate());
-        }
-        if(eReq.getValuation()!=null){
-            project.setValuation(eReq.getValuation());
-        }
-        projectServiceInterface.updateEntity(id,project);
+        projectServiceInterface.updateEntities(id,eReq);
         return new ResponseEntity<>("project updated", HttpStatus.OK);
     }
-
 
     //returns all project with details
     @GetMapping("/findAll")

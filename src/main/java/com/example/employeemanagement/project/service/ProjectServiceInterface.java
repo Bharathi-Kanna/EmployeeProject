@@ -5,6 +5,7 @@ import com.example.employeemanagement.project.Enums.ProjectType;
 import com.example.employeemanagement.project.entity.Project;
 import com.example.employeemanagement.generics.ServiceInterface;
 import com.example.employeemanagement.project.requests.AddProjectRequest;
+import com.example.employeemanagement.project.requests.UpdateProjectRequest;
 import com.example.employeemanagement.project.response.ProjectResponse;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +17,6 @@ public interface ProjectServiceInterface extends ServiceInterface<Project> {
     public List<Project> findByType(ProjectType type);
     public List<ProjectResponse> findAllEntities();
     public Project addEntities(AddProjectRequest eReq);
+    public Project updateEntities(Long id, UpdateProjectRequest entity);
+
 }
